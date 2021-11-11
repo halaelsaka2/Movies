@@ -2,7 +2,7 @@ import Movie from "../Movie";
 
 const ListMovies = (props) => {
   return (
-    <section className="movies" style={{ marginTop: "2rem" }}>
+    <section className="movies">
       {props.data.length > 0 ? (
         props.data.map((movie) => <Movie key={movie.id} data={movie} />)
       ) : (

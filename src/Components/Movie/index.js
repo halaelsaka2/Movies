@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeFavoriteMovies } from "../../Redux/Movie/Action";
 const Movie = (props) => {
   const dispatch = useDispatch();
-
+  const currentPage = useSelector((state) => state.MovieReducer.currentPage);
   const { data } = props;
   const [loved, setLoved] = useState(
     JSON.parse(localStorage.getItem("lovedMovies"))?.some((movie) => movie.id === data.id)
@@ -15,10 +15,10 @@ const Movie = (props) => {
     let movies = JSON.parse(localStorage.getItem("lovedMovies")) || [];
     if (loved) {
       movies.push(data);
-      dispatch(changeFavoriteMovies(movies));
+      dispatch(changeFavoriteMovies(movies, currentPage));
     } else {
       let newMovies = movies.filter((movie) => movie.id !== data.id);
-      dispatch(changeFavoriteMovies(newMovies));
+      dispatch(changeFavoriteMovies(newMovies, currentPage));
     }
   };
 
