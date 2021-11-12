@@ -9,7 +9,6 @@ const Search = () => {
   const searchHandler = (e) => {
     dispatch(saveSearchKeyword(e.target.value));
     debounce(() => {
-      console.log(e.target.value);
       dispatch(saveCurrentPage(1));
       if (e.target.value) {
         dispatch(searchMovie(e.target.value, 1));
@@ -19,17 +18,17 @@ const Search = () => {
     }, 1000)();
   };
   return (
-    <div className="wrapper">
-      <div className="filter">
-        <label style={{ color: "white", fontWeight: 600 }}>Search:</label>
-        <input
-          type="text"
-          value={searchKeyword}
-          className="search-input"
-          placeholder="Search"
-          onChange={searchHandler}
-        />
-      </div>
+    <div className="search-container">
+      <input
+        type="text"
+        value={searchKeyword}
+        className="search-input"
+        placeholder="Search"
+        onChange={searchHandler}
+      />
+      <span className="search-icon">
+        <i className="fa fa-search"></i>
+      </span>
     </div>
   );
 };

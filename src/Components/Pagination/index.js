@@ -20,7 +20,6 @@ const Pagination = (props) => {
       dispatch(getFavoriteMovies(page));
     }
   };
-  console.log(props.countMovies);
   return (
     <div className="wrapper">
       <PaginationComponent
@@ -36,6 +35,7 @@ const Pagination = (props) => {
         disabledClass="disabled"
         itemClassFirst="pg-first"
         itemClassLast="pg-last"
+        activeClass="pg-active"
       />
     </div>
   );

@@ -11,7 +11,7 @@ const Home = (props) => {
 
   useEffect(() => {
     dispatch(getFavoriteMovies(1));
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
