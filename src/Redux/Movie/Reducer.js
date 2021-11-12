@@ -9,7 +9,6 @@ export default function MovieReducer(state = initialState, action) {
         ...state,
         homeMovies: action.data.results,
         countHomeMovies: action.data.total_results,
-        searchKeyword: "",
       };
     case types.GET_MOVIES_BY_SEARCH:
       return {

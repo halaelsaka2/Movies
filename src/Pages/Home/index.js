@@ -15,19 +15,17 @@ const Home = () => {
   const dispatch = useDispatch();
   const homeMovies = useSelector((state) => state.MovieReducer.homeMovies);
   const countHomeMovies = useSelector((state) => state.MovieReducer.countHomeMovies);
-  const getMovieByFilter = useCallback(() => {
-    dispatch(filterMovies(filterValue, currentPage));
-  }, [dispatch, filterValue, currentPage]);
 
   useEffect(() => {
-    getMovieByFilter();
-  }, [getMovieByFilter]);
+    dispatch(filterMovies(filterValue, currentPage));
+  }, [dispatch]);
 
   const filterHandler = (e) => {
     let value = e.target.value;
     setCurrentPage(1);
     setFilterValue(value);
     dispatch(filterMovies(value, 1));
+    setSearchKeyword("");
   };
 
   const searchHandler = (e) => {
