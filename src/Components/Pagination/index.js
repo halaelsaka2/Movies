@@ -1,33 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
-
-import { saveCurrentPage, searchMovie, getFavoriteMovies, filterMovies } from "../../Redux/Movie/Action";
-import PaginationComponent from "react-js-pagination";
+import ReactPagination from "react-js-pagination";
 const Pagination = (props) => {
-  const dispatch = useDispatch();
-  const filterValue = useSelector((state) => state.MovieReducer.filterValue);
-  const searchKeyword = useSelector((state) => state.MovieReducer.searchKeyword);
-  const currentPage = useSelector((state) => state.MovieReducer.currentPage);
-
-  const pageChange = (page) => {
-    dispatch(saveCurrentPage(page));
-    if (props.type === "home") {
-      if (!searchKeyword) {
-        dispatch(filterMovies(filterValue, page));
-      } else {
-        dispatch(searchMovie(searchKeyword, page));
-      }
-    } else {
-      dispatch(getFavoriteMovies(page));
-    }
-  };
   return (
     <div className="wrapper">
-      <PaginationComponent
-        activePage={currentPage}
+      <ReactPagination
+        activePage={props.currentPage}
         itemsCountPerPage={20}
         totalItemsCount={props.countMovies}
         pageRangeDisplayed={5}
-        onChange={pageChange}
+        onChange={props.pageHandler}
         firstPageText="First"
         lastPageText="Last"
         itemClass="pg_item"

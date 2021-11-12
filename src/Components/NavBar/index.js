@@ -1,6 +1,6 @@
 import Search from "../Search";
 import { NavLink } from "react-router-dom";
-const NavBar = () => {
+const NavBar = (props) => {
   const listContent = (className) => (
     <div className={className}>
       <NavLink className="custom-link" to="/home" style={{ marginRight: "2rem" }}>
@@ -18,7 +18,7 @@ const NavBar = () => {
       <nav className="movie-nav">
         <img src="/assets/images/logo.svg" alt="logo" className="logo" />
         {listContent("list-container")}
-        <Search />
+        <Search searchKeyword={props.searchKeyword} searchHandler={props.searchHandler} />
       </nav>
       {listContent("changable")}
     </>

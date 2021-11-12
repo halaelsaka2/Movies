@@ -27,12 +27,3 @@ export function getFavoriteMovies(page) {
 export function changeFavoriteMovies(data, page) {
   return { type: types.CHANGE_FAVORITE_MOVIES, data: { data, page } };
 }
-export function saveSearchKeyword(keyword) {
-  return { type: types.SAVE_SEARCH_KEYWORD, data: keyword };
-}
-export function saveFilterValue(value) {
-  return { type: types.SAVE_FILTER_VALUE, data: value };
-}
-export function saveCurrentPage(page) {
-  return { type: types.SAVE_CURRENT_PAGE, data: page };
-}
